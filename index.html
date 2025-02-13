@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Operator Calculations</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+        }
+
+        .btn {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Operator Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#arithmetic">Arithmetic</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comparison">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#logical">Logical</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="container mt-5 content">
+        <h1>JavaScript Operator Calculator</h1>
+        <p>Use this webpage to explore arithmetic, comparison, and logical operations using JavaScript. Enter two numbers below, and click the buttons to see results for various operations.</p>
+
+        
+        <div class="mb-3">
+            <label for="num1" class="form-label">Enter Number A:</label>
+            <input type="number" class="form-control" id="num1" placeholder="Number A">
+        </div>
+        <div class="mb-3">
+            <label for="num2" class="form-label">Enter Number B:</label>
+            <input type="number" class="form-control" id="num2" placeholder="Number B">
+        </div>
+
+        
+        <h2 id="arithmetic">Arithmetic Operators</h2>
+        <button class="btn btn-primary" onclick="performArithmetic('add')">Add (A + B)</button>
+        <button class="btn btn-primary" onclick="performArithmetic('subtract')">Subtract (A - B)</button>
+        <button class="btn btn-primary" onclick="performArithmetic('multiply')">Multiply (A * B)</button>
+        <button class="btn btn-primary" onclick="performArithmetic('divide')">Divide (A / B)</button>
+        <p id="arithmeticResult" class="result"></p>
+
+       
+        <h2 id="comparison">Comparison Operators</h2>
+        <button class="btn btn-success" onclick="performComparison('greater')">Is A > B?</button>
+        <button class="btn btn-success" onclick="performComparison('equal')">Is A == B?</button>
+        <p id="comparisonResult" class="result"></p>
+
+       
+        <h2 id="logical">Logical Operators</h2>
+        <button class="btn btn-warning" onclick="performLogical('and')">A AND B (Are both non-zero?)</button>
+        <button class="btn btn-warning" onclick="performLogical('or')">A OR B (Is either non-zero?)</button>
+        <p id="logicalResult" class="result"></p>
+    </div>
+
+    <
+    <footer>
+        <p>Thanks to w3schools and ICT subject I did it. Please click the link. <a href="https://www.w3schools.com/js/js_operators.asp" target="_blank" style="color: #ffc107;">W3Schools</a>.</p>
+    </footer>
+
+    
+    <script>
+        // Function for arithmetic operations
+        function performArithmetic(operation) {
+            let A = parseFloat(document.getElementById("num1").value); // Get value of number A
+            let B = parseFloat(document.getElementById("num2").value); // Get value of number B
+            let result;  // Variable to store result
+
+            // Perform arithmetic operation based on button clicked
+            if (operation === 'add') {
+                result = A + B;  // A + B
+            } else if (operation === 'subtract') {
+                result = A - B;  // A - B
+            } else if (operation === 'multiply') {
+                result = A * B;  // A * B
+            } else if (operation === 'divide') {
+                result = A / B;  // A / B
+            }
+            
+            // Display result in HTML
+            document.getElementById("arithmeticResult").innerHTML = "Result: " + result;
+        }
+
+        // Function for comparison operations
+        function performComparison(operation) {
+            let A = parseFloat(document.getElementById("num1").value);  // Get value of number A
+            let B = parseFloat(document.getElementById("num2").value);  // Get value of number B
+            let result;  // Variable to store result
+
+            // Perform comparison based on button clicked
+            if (operation === 'greater') {
+                result = A > B;  // Is A greater than B?
+            } else if (operation === 'equal') {
+                result = A == B;  // Is A equal to B?
+            }
+
+            // Display result in HTML
+            document.getElementById("comparisonResult").innerHTML = "Result: " + result;
+        }
+
+        // Function for logical operations
+        function performLogical(operation) {
+            let A = parseFloat(document.getElementById("num1").value);  // Get value of number A
+            let B = parseFloat(document.getElementById("num2").value);  // Get value of number B
+            let result;  // Variable to store result
+
+            // Perform logical operation based on button clicked
+            if (operation === 'and') {
+                result = (A !== 0 && B !== 0);  // A AND B (both non-zero)
+            } else if (operation === 'or') {
+                result = (A !== 0 || B !== 0);  // A OR B (either non-zero)
+            }
+
+            // Display result in HTML
+            document.getElementById("logicalResult").innerHTML = "Logical Result: " + result;
+        }
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
